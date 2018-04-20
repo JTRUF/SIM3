@@ -24,5 +24,25 @@ module.exports = {
         session.user.username = username;
 
         res.status(200).send(session.user);
-        }
+    },
+    posts: (req,res) => {
+        let {userposts, search} = req.query;
+        const db = req.app.get('db');
+
+        db.posts().then(posts => {
+            if(userposts && search){
+                let filteredPosts = posts.filter(posts => posts.search === search);
+                res.status(200).send(filteredPosts)
+            }else if (userposts && search){
+                let filteredId = posts.filter(posts => {
+                    posts.id !== req.params.id
+                })
+            }else if (userposts && search){
+                
+            }
+        },
+    logout: (req,res) => {
+        req.session.destroy();
+        res.sendStatus(200)
     }
+}

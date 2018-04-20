@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {login} from './../../ducks/reducer';
 
-function Nav(){
+function Nav(props){
     return (
         <div>
             Nav

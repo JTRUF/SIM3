@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {getUser} from './../../ducks/reducer';
 
 class Auth extends Component{
     constructor() {
@@ -10,6 +12,8 @@ class Auth extends Component{
         }
         this.updatePassword = this.updatePassword.bind(this)
         this.updateUsername = this.updateUsername.bind(this)
+        this.registerUser = this.registerUser.bind(this)
+        this.LoginUser = this.LoginUser.bind(this)
     }
     registerUser() {
         let {username, password} = this.state
@@ -37,4 +41,4 @@ class Auth extends Component{
         )
     }
 }
-export default Auth;
+export default connect(null, {getUser})(Auth);
